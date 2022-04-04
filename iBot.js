@@ -102,21 +102,8 @@ client.on('message', async msg => {
         msg.reply(message);
     }
     else if(msg.body.startsWith('!ויקי')){
-        let words = msg.body.substring(6).split(" ");
-        let urlConfig = '';
-        words.forEach(word => {
-            urlConfig += word + '_';
-        });
-        urlConfig.substring(0 , urlConfig.length - 1);
-        request('https://he.wikipedia.org/wiki/' + encodeURI(urlConfig) , (error , 
-        response , html) => {
-           if(!error && response.statusCode == 200){
-               const $ = cheerio.load(html);
-               let text = $('.mw-parser-output').text(); 
-               msg.reply(text);
-           } 
-        })
-        
+        let text = chatCommandHandler.wiki(msg.body.substring(6));
+        msg.reply(text);
     }
     else if(msg.body.startsWith('!הגדרה')){
         let def = chatCommandHandler.getDef(msg.body.substring(7));

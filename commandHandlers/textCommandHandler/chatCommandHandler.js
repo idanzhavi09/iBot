@@ -32,8 +32,27 @@ function getDef(stringDef){
     return def;
 }
 
+function wiki(value){
+    let text= "";
+    let words = value.split(" ");
+        let urlConfig = '';
+        words.forEach(word => {
+            urlConfig += word + '_';
+        });
+        urlConfig.substring(0 , urlConfig.length - 1);
+        request('https://he.wikipedia.org/wiki/' + encodeURI(urlConfig) , (error , 
+        response , html) => {
+           if(!error && response.statusCode == 200){
+               const $ = cheerio.load(html);
+                text = $('.mw-parser-output').text(); 
+           } 
+        });
+        return text;
+}
+
 module.exports = {
     chatWith,
     download,
     getDef,
+    wiki,
 }
