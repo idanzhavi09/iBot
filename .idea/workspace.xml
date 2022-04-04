@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="4a8c97dc-b179-4663-9fd6-3aa9eee963c7" name="Changes" comment="commit-new" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2741dwm4ImxwoJcMCSjw7X6irOU" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4a8c97dc-b179-4663-9fd6-3aa9eee963c7" name="Changes" comment="" />
+      <created>1648564645618</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1648564645618</updated>
+    </task>
+    <task id="LOCAL‎00001" summary="commit">
+      <created>1648845359024</created>
+      <option name="number" value="LOCAL‎00001" />
+      <option name="presentableId" value="LOCAL‎00001" />
+      <updated>1648845359024</updated>
+    </task>
+    <task id="LOCAL‎00002" summary="commit">
+      <created>1648845665272</created>
+      <option name="number" value="LOCAL‎00002" />
+      <option name="presentableId" value="LOCAL‎00002" />
+      <updated>1648845665272</updated>
+    </task>
+    <task id="LOCAL‎00003" summary="commit">
+      <created>1648845788153</created>
+      <option name="number" value="LOCAL‎00003" />
+      <option name="presentableId" value="LOCAL‎00003" />
+      <updated>1648845788154</updated>
+    </task>
+    <task id="LOCAL‎00004" summary="commit-new">
+      <created>1648845885903</created>
+      <option name="number" value="LOCAL‎00004" />
+      <option name="presentableId" value="LOCAL‎00004" />
+      <updated>1648845885903</updated>
+    </task>
+    <task id="LOCAL‎00005" summary="commit-new">
+      <created>1648845962719</created>
+      <option name="number" value="LOCAL‎00005" />
+      <option name="presentableId" value="LOCAL‎00005" />
+      <updated>1648845962719</updated>
+    </task>
+    <task id="LOCAL‎00006" summary="commit-new">
+      <created>1648850691684</created>
+      <option name="number" value="LOCAL‎00006" />
+      <option name="presentableId" value="LOCAL‎00006" />
+      <updated>1648850691684</updated>
+    </task>
+    <task id="LOCAL‎00007" summary="commit-new">
+      <created>1648850831799</created>
+      <option name="number" value="LOCAL‎00007" />
+      <option name="presentableId" value="LOCAL‎00007" />
+      <updated>1648850831799</updated>
+    </task>
+    <task id="LOCAL‎00008" summary="commit-new">
+      <created>1648902927562</created>
+      <option name="number" value="LOCAL‎00008" />
+      <option name="presentableId" value="LOCAL‎00008" />
+      <updated>1648902927562</updated>
+    </task>
+    <task id="LOCAL‎00009" summary="commit-new">
+      <created>1648929019275</created>
+      <option name="number" value="LOCAL‎00009" />
+      <option name="presentableId" value="LOCAL‎00009" />
+      <updated>1648929019275</updated>
+    </task>
+    <task id="LOCAL‎00010" summary="commit-new">
+      <created>1648983364136</created>
+      <option name="number" value="LOCAL‎00010" />
+      <option name="presentableId" value="LOCAL‎00010" />
+      <updated>1648983364136</updated>
+    </task>
+    <task id="LOCAL‎00011" summary="commit-new">
+      <created>1648983981801</created>
+      <option name="number" value="LOCAL‎00011" />
+      <option name="presentableId" value="LOCAL‎00011" />
+      <updated>1648983981801</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="commit" />
+    <MESSAGE value="commit-new" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit-new" />
+  </component>
+</project>
