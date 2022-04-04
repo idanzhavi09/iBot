@@ -18,8 +18,22 @@ function download(msg){
 
     return returnURL;
 }
+function getDef(stringDef){
+    const url = 'https://www.morfix.co.il/'
+    let def = '';
+    let uriConfig = encodeURI(stringDef);
+    console.log(url + uriConfig);
+    request(url + uriConfig , (error , response , html) => {
+        if(!error && response.statusCode == 200){
+            const $ = cheerio.load(html);
+             def = $('.Translation_hemin_heToen span').text();
+        }
+    });
+    return def;
+}
 
 module.exports = {
     chatWith,
     download,
+    getDef,
 }

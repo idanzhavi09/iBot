@@ -119,16 +119,8 @@ client.on('message', async msg => {
         
     }
     else if(msg.body.startsWith('!הגדרה')){
-        const url = 'https://www.morfix.co.il/'
-        let uriConfig = encodeURI(msg.body.substring(7));
-        console.log(url + uriConfig);
-        request(url + uriConfig , (error , response , html) => {
-            if(!error && response.statusCode == 200){
-                const $ = cheerio.load(html);
-                let def = $('.Translation_hemin_heToen span').text();
-                msg.reply(def);
-            }
-        })
+        let def = chatCommandHandler.getDef(msg.body.substring(7));
+        msg.reply(def);
     }
     else if(msg.body.startsWith('!תרגם')){
         let translation="";
