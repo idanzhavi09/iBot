@@ -15,25 +15,30 @@ Table of Contents
 
 ---
 
-##Description
+Description
 
 The iBot was built using the whatsapp-web.js library , using multiple methods and scripts
 We were able to make it a highly functional bot , making it very useful.
 
-####Technologies
+---
+
+Technologies
 - Web scraping with request and cheerio
 - api calling
 - Python
 
-##How To Use
+---
 
-clone the repository with HTTPS:
-https://github.com/idanzhavi09/iBotProject.git
+How To Use
 
-Or through SSH:
-git@github.com:idanzhavi09/iBotProject.git
+-Installation:
+  clone the repository with HTTPS:
+  https://github.com/idanzhavi09/iBotProject.git
 
-run 'npm i' to install all the dependencies
+  Or through SSH:
+  git@github.com:idanzhavi09/iBotProject.git
+
+  run 'npm i' to install all the dependencies
 
 run the script and link a whatsapp account like you would a whatsapp web device
 
