@@ -43,5 +43,3 @@ How To Use
 run the script and link a whatsapp account like you would a whatsapp web device
 
 Thats it!
-  this is supposed
-  to be a code block
