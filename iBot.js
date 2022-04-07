@@ -156,7 +156,7 @@ client.on('message', async msg => {
 
     }
     else if(msg.body.startsWith('!קורונה')){
-        request('https://api.nhs.uk/conditions/coronavirus-covid-19?url=iBot&modules=false' , 
+        request('' , 
         (error , response) => {
             if(!error && response.statusCode == 200){
                 console.log(html);
