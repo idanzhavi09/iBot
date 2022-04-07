@@ -47,7 +47,7 @@ async function getLogsForDate(DATE , PHONE_NUMBER){
               i++;
           });
 
-          return messageLogs;
+          return Promise.resolve(messageLogs);
 }
 
 module.exports = {

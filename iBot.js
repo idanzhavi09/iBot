@@ -10,8 +10,7 @@ const puppeteer = require('puppeteer');
 const spawner = require('child_process').spawn;
 const figlet = require('figlet');
 const Image = require('ascii-art-image');
-const dotenv = require("dotenv");
-
+const dotenv = require("dotenv").config();
 
 
 
@@ -136,8 +135,8 @@ client.on('message', async msg => {
           msg.reply('מטלה נוספה בהצלחה!')
     }
     else if(msg.body.startsWith('!מטלות')){
-        task.getTasks(msg.from);
-          msg.reply(tasksOutput)
+        let tasksOutput = await task.getTasks(msg.from);
+          msg.reply(tasksOutput);
     }
     else if(msg.body.startsWith('!מחק')){
         task.delTask(msg.from , msg.body.substring(5));
@@ -150,7 +149,7 @@ client.on('message', async msg => {
     }
     else if(msg.body.startsWith('!תיעוד')){
         let dateRecived = msg.body.substring(7);
-        let messageLogs = diary.getLogsForDate(dateRecived , msg.from);
+        let messageLogs = await diary.getLogsForDate(dateRecived , msg.from);
         
         msg.reply(messageLogs);
 

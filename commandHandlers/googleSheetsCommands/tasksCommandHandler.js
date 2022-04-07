@@ -1,5 +1,6 @@
 const { GoogleSpreadsheet } = require('google-spreadsheet');
-const dotenv = require('dotenv');
+const dotenv = require('dotenv').config();
+
 
 async function saveTask(task , PHONE_NUMBER){
     const doc = new GoogleSpreadsheet(process.env.TASK_SPREADSHEET_KEY);
@@ -42,7 +43,7 @@ async function getTasks(PHONE_NUMBER) {
           index++;
       });
 
-      return tasksOutput;
+      return Promise.resolve(tasksOutput);
 }
 
 async function delTask(PHONE_NUMBER , taskNum){
@@ -64,7 +65,7 @@ async function delTask(PHONE_NUMBER , taskNum){
               }
           });
           
-          let task = userTasks[taskNum].TASK;
+          let task = userTasks[taskNum - 1].TASK;
           let savePos = 0;
           let index = 0;
           rows.forEach(row => {
