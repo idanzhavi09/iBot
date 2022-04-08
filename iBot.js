@@ -155,13 +155,8 @@ client.on('message', async msg => {
 
     }
     else if(msg.body.startsWith('!קורונה')){
-        request('' , 
-        (error , response) => {
-            if(!error && response.statusCode == 200){
-                console.log(html);
-            }
-        })
-
+        let message = await chatCommandHandler.getCovidDataByCountry(msg.body.substring(8));
+        msg.reply(message);
     }
     else if(msg.body.startsWith('!צאט')){
 

@@ -1,3 +1,5 @@
+const request = require('request');
+
 function chatWith(PHONE_NUMBER){
     var url = 'wa.me//';
     if(PHONE_NUMBER.charAt(0) == '0'){
@@ -50,9 +52,38 @@ function wiki(value){
         return text;
 }
 
+async function getCovidDataByCountry(countryName){
+
+    var message = '';
+
+    const options = {
+        method: 'GET',
+        url: 'https://corona-virus-world-and-india-data.p.rapidapi.com/api',
+        headers: {
+          'X-RapidAPI-Host': 'corona-virus-world-and-india-data.p.rapidapi.com',
+          'X-RapidAPI-Key': '03bc1d6a21msh5dc1f3d09f61988p1ab0a2jsn585dae537ca9',
+          useQueryString: true
+        }
+      };
+      
+      request(options, function (error, response, body) {
+        if (error) throw new Error(error);
+        var data = JSON.parse(body);
+        let length = Object.keys( data.countries_stat ).length;
+        for(let i = 0;i < length; i++){
+            if(data.countries_stat[i].country_name == countryName){
+                message += data.countries_stat[i].toString();
+            }
+        }
+      });
+
+      return Promise.resolve(message);
+}
+
 module.exports = {
     chatWith,
     download,
     getDef,
     wiki,
+    getCovidDataByCountry,
 }
