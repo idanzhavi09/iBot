@@ -7,7 +7,7 @@
 
 ---
 
-###Table of Contents
+### Table of Contents
 - [Description](#description)
 - [How to use](#how-to-use)
 - [Refrences](#refrences)
@@ -15,7 +15,7 @@
 
 ---
 
-Description
+## Description
 
 The iBot was built using the whatsapp-web.js library , using multiple methods and scripts
 We were able to make it a highly functional bot , making it very useful.
@@ -29,7 +29,7 @@ Technologies
 
 ---
 
-How To Use
+## How To Use
 
 -Installation:
   clone the repository with HTTPS:
