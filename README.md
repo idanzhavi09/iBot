@@ -1,13 +1,13 @@
 # iBot
 
-![profile Image]()
+![profile Image]('iBotImage.jpeg')
 
 >Javascript Whaatsapp bot that utilizes whatsapp-web.js library for whatsapp api control 
->written by Idan Zehavi in collabration with lior hajaj
+>written by Idan Zehavi in collabration with Lior Hajaj
 
 ---
 
-###Table of Contents
+### Table of Contents
 - [Description](#description)
 - [How to use](#how-to-use)
 - [Refrences](#refrences)
@@ -15,7 +15,7 @@
 
 ---
 
-Description
+## Description
 
 The iBot was built using the whatsapp-web.js library , using multiple methods and scripts
 We were able to make it a highly functional bot , making it very useful.
@@ -26,10 +26,11 @@ Technologies
 - Web scraping with request and cheerio
 - api calling
 - Python
+- Google Sheets api
 
 ---
 
-How To Use
+## How To Use
 
 -Installation:
   clone the repository with HTTPS:
@@ -43,3 +44,9 @@ How To Use
 run the script and link a whatsapp account like you would a whatsapp web device
 
 Thats it!
+
+---
+
+## Refrances
+
+- covid api: https://rapidapi.com/spamakashrajtech/api/corona-virus-world-and-india-data/
