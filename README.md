@@ -26,6 +26,7 @@ Technologies
 - Web scraping with request and cheerio
 - api calling
 - Python
+- Google Sheets api
 
 ---
 
