@@ -1,6 +1,6 @@
 # iBot
 
-![profile Image]()
+![profile Image]('iBotImage.jpeg')
 
 >Javascript Whaatsapp bot that utilizes whatsapp-web.js library for whatsapp api control 
 >written by Idan Zehavi in collabration with lior hajaj
