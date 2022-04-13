@@ -1,4 +1,6 @@
 const request = require('request');
+const axios = require('axios');
+const dotenv = require('dotenv');
 
 function chatWith(PHONE_NUMBER){
     var url = 'wa.me//';
@@ -61,12 +63,12 @@ async function getCovidDataByCountry(countryName){
         url: 'https://corona-virus-world-and-india-data.p.rapidapi.com/api',
         headers: {
           'X-RapidAPI-Host': 'corona-virus-world-and-india-data.p.rapidapi.com',
-          'X-RapidAPI-Key': '03bc1d6a21msh5dc1f3d09f61988p1ab0a2jsn585dae537ca9',
+          'X-RapidAPI-Key': process.env.X-RapidAPI-Key,
           useQueryString: true
         }
       };
       
-      request(options, function (error, response, body) {
+    request(options, function (error, response, body) {
         if (error) throw new Error(error);
         var data = JSON.parse(body);
         let length = Object.keys( data.countries_stat ).length;
@@ -79,6 +81,8 @@ async function getCovidDataByCountry(countryName){
 
       return Promise.resolve(message);
 }
+
+
 
 module.exports = {
     chatWith,

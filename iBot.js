@@ -28,7 +28,8 @@ const req = require('express/lib/request');
 const helpCommandHandler = require('./commandHandlers/helpHandler/helpCommandHandler');
 const chatCommandHandler = require('./commandHandlers/textCommandHandler/chatCommandHandler');
 const task = require('./commandHandlers/googleSheetsCommands/tasksCommandHandler');
-const diary = require('./commandHandlers/googleSheetsCommands/diaryCommandHandler')
+const diary = require('./commandHandlers/googleSheetsCommands/diaryCommandHandler');
+
 
 const SESSION_FILE_PATH = './session.json';
 let sessionData;
@@ -155,8 +156,7 @@ client.on('message', async msg => {
 
     }
     else if(msg.body.startsWith('!קורונה')){
-        let message = await chatCommandHandler.getCovidDataByCountry(msg.body.substring(8));
-        msg.reply(message);
+         await covid(msg);
     }
     else if(msg.body.startsWith('!צאט')){
 
