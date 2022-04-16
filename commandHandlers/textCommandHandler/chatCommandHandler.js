@@ -1,6 +1,7 @@
 const request = require('request');
 const axios = require('axios');
 const dotenv = require('dotenv');
+const cheerio = require('cheerio');
 
 function chatWith(PHONE_NUMBER){
     var url = 'wa.me//';
@@ -22,7 +23,7 @@ function download(msg){
 
     return returnURL;
 }
-function getDef(stringDef){
+async function getDef(stringDef){
     const url = 'https://www.morfix.co.il/'
     let def = '';
     let uriConfig = encodeURI(stringDef);
@@ -33,7 +34,7 @@ function getDef(stringDef){
              def = $('.Translation_hemin_heToen span').text();
         }
     });
-    return def;
+    return Promise.resolve(def);
 }
 
 function wiki(value){

@@ -29,14 +29,20 @@ const helpCommandHandler = require('./commandHandlers/helpHandler/helpCommandHan
 const chatCommandHandler = require('./commandHandlers/textCommandHandler/chatCommandHandler');
 const task = require('./commandHandlers/googleSheetsCommands/tasksCommandHandler');
 const diary = require('./commandHandlers/googleSheetsCommands/diaryCommandHandler');
+const List = require('whatsapp-web.js/src/structures/List');
 
 
+// Path where the session data will be stored
 const SESSION_FILE_PATH = './session.json';
+const COUNTER_FILE_PATH = './counter.json';
+
+// Load the session data if it has been previously saved
 let sessionData;
 if(fs.existsSync(SESSION_FILE_PATH)) {
     sessionData = require(SESSION_FILE_PATH);
 }
 
+// Use the saved values
 const client = new Client({
     authStrategy: new LegacySessionAuth({
         session: sessionData
@@ -45,23 +51,6 @@ const client = new Client({
 
 // Save session values to the file upon successful auth
 client.on('authenticated', (session) => {
-    sessionData = session;
-    fs.writeFile(SESSION_FILE_PATH, JSON.stringify(session), (err) => {
-        if (err) {
-            console.error(err);
-        }
-    });
-});
-
-
-
-client.on('qr', qr => {
-    qrcode.generate(qr, {small: true});
-});
-
-client.on('authenticated', () => {
-
-
     var image = new Image({
         filepath: 'iBotImage.jpeg',
         alphabet:'variant4'
@@ -80,14 +69,23 @@ client.on('authenticated', () => {
     
 
     })
-    
-    console.log('AUTHENTICATED');
+    sessionData = session;
+    fs.writeFile(SESSION_FILE_PATH, JSON.stringify(session), (err) => {
+        if (err) {
+            console.error(err);
+        }
+    });
+});
 
+client.on('qr', qr => {
+    qrcode.generate(qr, {small: true});
 });
 
 client.on('ready', () => {
     console.log('Client is ready!');
+    
 });
+
 
 client.on('message', async msg => {
 
@@ -102,12 +100,35 @@ client.on('message', async msg => {
         msg.reply(message);
     }
     else if(msg.body.startsWith('!ויקי')){
-        let text = chatCommandHandler.wiki(msg.body.substring(6));
-        msg.reply(text);
+        let text= "";
+        let words = msg.body.substring(6).split(" ");
+            let urlConfig = '';
+            words.forEach(word => {
+                urlConfig += word + '_';
+            });
+            urlConfig.substring(0 , urlConfig.length - 1);
+            request('https://he.wikipedia.org/wiki/' + encodeURI(urlConfig) , (error , 
+            response , html) => {
+               if(!error && response.statusCode == 200){
+                   const $ = cheerio.load(html);
+                    text = $('.mw-parser-output').text(); 
+                    msg.reply(text);
+               } 
+            });
+
     }
     else if(msg.body.startsWith('!הגדרה')){
-        let def = chatCommandHandler.getDef(msg.body.substring(7));
-        msg.reply(def);
+        const url = 'https://www.morfix.co.il/';
+        let def = '';
+        let uriConfig = encodeURI(msg.body.substring(7));
+        console.log(url + uriConfig);
+        request(url + uriConfig , (error , response , html) => {
+            if(!error && response.statusCode == 200){
+                const $ = cheerio.load(html);
+                 def = $('.Translation_hemin_heToen span').text();
+                 msg.reply(def);
+            }
+        });
     }
     else if(msg.body.startsWith('!תרגם')){
         let translation="";
@@ -156,7 +177,7 @@ client.on('message', async msg => {
 
     }
     else if(msg.body.startsWith('!קורונה')){
-         await covid(msg);
+         
     }
     else if(msg.body.startsWith('!צאט')){
 
@@ -171,10 +192,28 @@ client.on('message', async msg => {
     else if(msg.body.startsWith('!אינסט')){
 
     }
+    else if(msg.body.startsWith('!קישור')){
+        if((await msg.getChat()).isGroup == true){
+            let group =await msg.getChat();
+            msg.reply(group.getInviteCode());
+        }
+    }
+    else if (msg.body === '!רשימה') {
+        let sections = [{title:'sectionTitle',rows:[{title:'ListItem1', description: 'desc'},{title:'ListItem2'}]}];
+        let list = new List('List body','btnText',sections,'Title','footer');
+        client.sendMessage(msg.from, list);
+    }
+    else if(msg.body.startsWith('!סטיקר')){
     
+        let chat = msg.getChat();
+        let media = await msg.downloadMedia();
+        await (await chat).sendMessage(media , {sendMediaAsSticker:true});
+
+    }
 
 	
 });
+
 
 client.initialize();
 
