@@ -50,3 +50,4 @@ Thats it!
 ## Refrances
 
 - covid api: https://rapidapi.com/spamakashrajtech/api/corona-virus-world-and-india-data/
+- whatsapp-web.js lib: https://wwebjs.dev/guide/
