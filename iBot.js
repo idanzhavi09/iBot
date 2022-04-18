@@ -11,6 +11,7 @@ const spawner = require('child_process').spawn;
 const figlet = require('figlet');
 const Image = require('ascii-art-image');
 const dotenv = require("dotenv").config();
+const axios = require('axios');
 
 
 
@@ -30,23 +31,14 @@ const chatCommandHandler = require('./commandHandlers/textCommandHandler/chatCom
 const task = require('./commandHandlers/googleSheetsCommands/tasksCommandHandler');
 const diary = require('./commandHandlers/googleSheetsCommands/diaryCommandHandler');
 const List = require('whatsapp-web.js/src/structures/List');
+const group = require('whatsapp-web.js/src/structures/GroupChat');
+const Location = require('whatsapp-web.js/src/structures/Location');
+const { json } = require('express/lib/response');
 
+const {LocalAuth } = require('whatsapp-web.js');
 
-// Path where the session data will be stored
-const SESSION_FILE_PATH = './session.json';
-const COUNTER_FILE_PATH = './counter.json';
-
-// Load the session data if it has been previously saved
-let sessionData;
-if(fs.existsSync(SESSION_FILE_PATH)) {
-    sessionData = require(SESSION_FILE_PATH);
-}
-
-// Use the saved values
 const client = new Client({
-    authStrategy: new LegacySessionAuth({
-        session: sessionData
-    })
+    authStrategy: new LocalAuth()
 });
 
 // Save session values to the file upon successful auth
@@ -69,12 +61,6 @@ client.on('authenticated', (session) => {
     
 
     })
-    sessionData = session;
-    fs.writeFile(SESSION_FILE_PATH, JSON.stringify(session), (err) => {
-        if (err) {
-            console.error(err);
-        }
-    });
 });
 
 client.on('qr', qr => {
@@ -210,8 +196,38 @@ client.on('message', async msg => {
         await (await chat).sendMessage(media , {sendMediaAsSticker:true});
 
     }
+    else if(msg.body.startsWith('!מיקום')){
+        var lat = 0;
+        var lon = 0;
 
-	
+        function getLocation() {
+        const options = {
+          method: 'GET',
+          url: 'https://forward-reverse-geocoding.p.rapidapi.com/v1/search',
+          qs: {q: msg.body.substring(7), 'accept-language': 'en', polygon_threshold: '0.0'},
+          headers: {
+            'X-RapidAPI-Host': 'forward-reverse-geocoding.p.rapidapi.com',
+            'X-RapidAPI-Key': process.env.geocodingRapid,
+            useQueryString: true
+          }
+        };
+        
+        request(options, function (error, response, body) {
+            if (error) throw new Error(error);
+        
+            console.log(body);
+             lon = body.substring(body.indexOf("lon") + 6 , body.indexOf("lon") + 16);
+             lat = body.substring(body.indexOf("lat") + 6 , body.indexOf("lat") + 16);
+
+             
+        });
+    }
+        getLocation();
+        msg.reply(new Location(lat, lon, msg.body.substring(7)));
+}
+
+
+
 });
 
 
